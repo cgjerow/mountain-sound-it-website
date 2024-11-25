@@ -3,3 +3,9 @@ body {
   color: rebeccapurple;
   background-color: thistle;
 }
+
+h1 {
+  font-family: "Syne", sans-serif;
+  font-optical-sizing: auto;
+  font-style: bold;
+}
