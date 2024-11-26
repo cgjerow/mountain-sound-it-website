@@ -7,7 +7,7 @@ export default (eleventyConfig) => {
     passthroughFileCopy: true,
     dir: {
       input: "src",
-      output: "public",
+      output: "docs",
       includes: "_includes",
       data: "_data",
     },
