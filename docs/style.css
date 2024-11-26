@@ -2,6 +2,7 @@
 /* Body */
 
 body {
+  margin: 0;
   font-family: "Syne", sans-serif;
   font-optical-sizing: none;
   font-style: normal;
