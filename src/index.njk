@@ -3,14 +3,48 @@ layout: layout.njk
 title: The Best Eleventy Demo TM
 ---
 
-<h1>Yo Eleventy</h1>
-<p>This site rocks.</p>
+<section>
+<div class="hero">
+  <div class="hero-text">
+    <h1 class="hero-line-1">Construct Something Simple</h1>
+    <p class="hero-line-2">&nbsp;&nbsp;Empowering Small Businesses with Effective IT Solutions</p>
+  <div>
+</div>
+</section>
 
-<h2>Best. Blog. Ever.</h2>
-<p>Such profoundness</p>
+<section class="main">
+  <div>
+  <h1>Who We Are</h1>
+  <p>At Mountain Sound IT we understand that technology is a necessary but often cumbersome aspect of doing business. By focusing on essentials, designing simple technology solutions, and constantly maintnaining focus on your day to day business needs, we will help minimize your technology burden.</p>
+  <p>Make technology simple for your teams and your business. We have the experiences of building functional applications, cost effective cloud architectures, and robust integrations with the tools you already use. We want your off the rack systems to feel custom fit.</p>
+  <div>
 
-<ul>
-{% for post in collections.blog %}
-  <li><a href="{{ post.url }}">{{ post.data.title }}</a></li>
-{% endfor %}
-</ul>
+  <div class="contact">
+    <h1>Contact Us</h1>
+    <p>Reach out directly to <a href="mailto:connor@mountainsoundit.com?Subject=Service%20Inquiry">Connor Jerow</a>, owner and consultant.</p>
+  <div>
+  <!-- 
+  <div>
+    <form class="contact-form" action="submit_form.php" method="post">
+        <h2>Contact Us</h2>
+        <div class="form-row">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Your full name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Your email address" required>
+            </div>
+        </div>
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" name="subject" placeholder="Subject" required>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Your message" required></textarea>
+
+        <button type="submit">Send Message</button>
+    </form>
+  <div>
+  -->
+</section>
