@@ -109,6 +109,10 @@ nav {
   margin-top: 35px;
 }
 
+.main h1 {
+  margin-bottom: 0px;
+}
+
 
 
 /* Media Queries for Larger and Smaller Screens */
