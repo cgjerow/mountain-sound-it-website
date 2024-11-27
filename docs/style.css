@@ -1,3 +1,10 @@
+/* Nav */
+
+body nav h1 {
+  display: inline-block;
+}
+
+
 
 /* Body */
 
@@ -105,7 +112,7 @@ nav {
 /* Large screens (Desktops and larger tablets) */
 @media screen and (min-width: 1200px) {
   .home-link {
-    font-size: 2rem;
+    font-size: 3rem;
   }
   p {
     font-size: 1.2rem;
@@ -121,7 +128,7 @@ nav {
 /* Medium screens (Tablets and smaller desktops) */
 @media screen and (max-width: 1199px) and (min-width: 768px) {
   .home-link {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
   p {
     font-size: 1.1rem;
@@ -137,7 +144,7 @@ nav {
 /* Small screens (Mobile phones) */
 @media screen and (max-width: 767px) {
   .home-link {
-    font-size: 1rem;
+    font-size: 1.8rem;
   }
   p {
     font-size: 1rem;
@@ -153,7 +160,7 @@ nav {
 /* Extra small screens (Very small phones) */
 @media screen and (max-width: 480px) {
   .home-link {
-    font-size: .75rem;
+    font-size: 1.2rem;
   }
   p {
     font-size: 0.9rem;
