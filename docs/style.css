@@ -167,9 +167,6 @@ nav {
 
 /* Small screens (Mobile phones) */
 @media screen and (max-width: 767px) {
-  .home-link {
-    font-size: 1.8rem;
-  }
   p {
     font-size: 1rem;
   }
@@ -180,7 +177,7 @@ nav {
     font-size: 1.02rem;
   }
   .hero {
-    height: 25vh;
+    height: 30vh;
   }
 
 
@@ -195,13 +192,15 @@ nav {
   nav {
     display: none;
   }
+
+
+  .main h1 {
+    font-size: 1.2rem;
+  }
 }
 
 /* Extra small screens (Very small phones) */
 @media screen and (max-width: 480px) {
-  .home-link {
-    font-size: 1.2rem;
-  }
   p {
     font-size: 0.9rem;
   }
@@ -212,7 +211,7 @@ nav {
     font-size: .75rem;
   }
   .hero {
-    height: 25vh;
+    height: 30vh;
   }
 
 
@@ -226,5 +225,10 @@ nav {
 
   nav {
     display: none;
+  }
+
+
+  .main h1 {
+    font-size: 1.2rem;
   }
 }
