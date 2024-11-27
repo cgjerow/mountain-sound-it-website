@@ -49,6 +49,15 @@ nav {
 
 
 
+/* Main Content Section */
+/* Content below the hero section */
+
+.main h1 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+
 
 /* Hero section */
 
@@ -98,22 +107,6 @@ nav {
 
 
 
-/* Main Content Section */
-
-/* Content below the hero section */
-.main {
-  padding: 15px;
-}
-
-.main .contact {
-  margin-top: 15px;
-}
-
-.main h1 {
-  margin-top: 0px;
-  margin-bottom: 0px;
-}
-
 
 
 /* Media Queries for Larger and Smaller Screens */
@@ -135,6 +128,14 @@ nav {
   .hero {
     height: 70vh;
   }
+
+
+  .main {
+    padding: 30px;
+  }
+  .main .contact {
+    margin-top: 30px;
+  }
 }
 
 /* Medium screens (Tablets and smaller desktops) */
@@ -153,6 +154,14 @@ nav {
   }
   .hero {
     height: 60vh;
+  }
+
+
+  .main {
+    padding: 30px;
+  }
+  .main .contact {
+    margin-top: 30px;
   }
 }
 
@@ -173,6 +182,14 @@ nav {
   .hero {
     height: 40vh;
   }
+
+
+  .main {
+    padding: 15px;
+  }
+  .main .contact {
+    margin-top: 15px;
+  }
 }
 
 /* Extra small screens (Very small phones) */
@@ -191,5 +208,13 @@ nav {
   }
   .hero {
     height: 40vh;
+  }
+
+
+  .main {
+    padding: 15px;
+  }
+  .main .contact {
+    margin-top: 15px;
   }
 }
