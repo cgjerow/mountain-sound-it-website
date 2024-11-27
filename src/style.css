@@ -123,6 +123,9 @@ nav {
   .hero-line-2 {
     font-size: 2rem;
   }
+  .hero {
+    height: 80vh;
+  }
 }
 
 /* Medium screens (Tablets and smaller desktops) */
@@ -138,6 +141,9 @@ nav {
   }
   .hero-line-2 {
     font-size: 1.35rem;
+  }
+  .hero {
+    height: 70vh;
   }
 }
 
@@ -155,6 +161,9 @@ nav {
   .hero-line-2 {
     font-size: 1.02rem;
   }
+  .hero {
+    height: 60vh;
+  }
 }
 
 /* Extra small screens (Very small phones) */
@@ -170,5 +179,8 @@ nav {
   }
   .hero-line-2 {
     font-size: .75rem;
+  }
+  .hero {
+    height: 50vh;
   }
 }
