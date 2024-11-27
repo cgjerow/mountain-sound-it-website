@@ -197,6 +197,10 @@ nav {
   .main h1 {
     font-size: 1.2rem;
   }
+
+  .main p {
+    margin: 7px 0px;
+  }
 }
 
 /* Extra small screens (Very small phones) */
@@ -230,5 +234,9 @@ nav {
 
   .main h1 {
     font-size: 1.2rem;
+  }
+
+  .main p {
+    margin: 7px 0px;
   }
 }
