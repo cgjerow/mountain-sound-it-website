@@ -1,6 +1,6 @@
 export default (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("src/style.css");
-  eleventyConfig.addPassthroughCopy("src/hero.svg");
+  eleventyConfig.addPassthroughCopy("src/hero.jpg");
 
   return {
     // When a passthrough file is modified, rebuild the pages:

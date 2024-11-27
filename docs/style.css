@@ -50,7 +50,7 @@ nav {
   justify-content: center;
   align-items: center;
   height: 80vh;                     /* Full viewport height */
-  background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url('hero.svg'); /* Replace with your SVG file */
+  background-image: linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url('hero.jpg'); /* Replace with your SVG file */
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -83,6 +83,7 @@ nav {
   margin: 0;
   font-weight: normal;
   color: white;                      /* Text color for visibility */
+  padding-left: .25rem;
 }
 
 
@@ -129,7 +130,7 @@ nav {
     font-size: 4rem;
   }
   .hero-line-2 {
-    font-size: 1.75rem;
+    font-size: 1.35rem;
   }
 }
 
@@ -145,7 +146,7 @@ nav {
     font-size: 3rem;
   }
   .hero-line-2 {
-    font-size: 1rem;
+    font-size: 1.02rem;
   }
 }
 
