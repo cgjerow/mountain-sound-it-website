@@ -9,7 +9,7 @@
 .logo-header {
     display: flex; /* Align children in a row */
     align-items: center; /* Center vertically */
-    gap: 10px; /* Space between logo and header */
+    gap: 0px; /* Space between logo and header */
 }
 
 .logo {
