@@ -1,5 +1,6 @@
 export default (eleventyConfig) => {
   eleventyConfig.addPassthroughCopy("src/style.css");
+  eleventyConfig.addPassthroughCopy("src/logo.svg");
   eleventyConfig.addPassthroughCopy("src/hero.jpg");
 
   return {

@@ -1,9 +1,25 @@
 /* Nav */
 
-body nav h1 {
-  display: inline-block;
+.logo-header-link {
+    text-decoration: none; /* Remove underline from link */
+    color: inherit; /* Inherit text color */
+    display: inline-block; /* Allows for padding and centering */
 }
 
+.logo-header {
+    display: flex; /* Align children in a row */
+    align-items: center; /* Center vertically */
+    gap: 10px; /* Space between logo and header */
+}
+
+.logo {
+    width: 100px; /* Adjust size as needed */
+    height: auto;
+}
+
+.header {
+    font-size: 2rem; /* Adjust text size */
+}
 
 
 /* Body */
