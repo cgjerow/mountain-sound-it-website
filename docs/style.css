@@ -13,8 +13,8 @@
 }
 
 .logo {
-    width: 100px; /* Adjust size as needed */
-    height: auto;
+    width: auto; /* Adjust size as needed */
+    height: 4rem;
 }
 
 .header {
