@@ -1,0 +1,27 @@
+---
+import Navigation from '../components/Navigation.astro'
+import BaseHead from '../components/BaseHead.astro'
+---
+
+<html lang="en">
+	<head>
+		<BaseHead />
+	</head>
+	<body>
+    <Navigation />
+		<div class="slot">
+    <slot />
+		</div>
+	</body>
+</html>
+
+<style>
+	.slot {
+		padding-top: 80px;
+	}
+  @media screen and (max-width: 767px) {
+		.slot {
+			padding-top: 50px;
+		}
+	}
+</style>
