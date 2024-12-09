@@ -4,4 +4,7 @@ export default defineConfig({
   outDir: "docs",
   site: "https://www.mountainsoundit.com",
   output: "static",
+  build: {
+    assets: "assets",
+  },
 });
