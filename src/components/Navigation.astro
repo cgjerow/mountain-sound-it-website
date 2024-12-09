@@ -1,0 +1,137 @@
+---
+import Logo from './logo.svg'
+---
+
+<header class="header-nav">
+    <a class="logo-header-link home-link" href="/">
+       <div class="logo-header">
+          <img src={Logo.src} alt="Logo" class="logo">
+          <h1 class="logo-text">Mountain Sound IT</h1>
+      </div>
+    </a>
+
+    <!--<nav class="nav">
+      <h2 class="visually-hidden">Top level navigation menu</h2>
+      <ul class="nav-menu">
+        <li class="nav-item"><a href="/test" aria-current="page">test</a></li>
+      </ul>
+    </nav>-->
+</header>
+
+<style>
+  .logo-header-link {
+      margin-left: 3%;
+      text-decoration: none; /* Remove underline from link */
+      color: inherit; /* Inherit text color */
+      display: inline-block; /* Allows for padding and centering */
+  }
+
+  .logo-header {
+      display: flex; /* Align children in a row */
+      align-items: center; /* Center vertically */
+      gap: 0px; /* Space between logo and header */
+  }
+
+  .logo {
+      width: auto; /* Adjust size as needed */
+      height: 4rem;
+  }
+
+  .logo-text {
+      font-size: 2rem; /* Adjust text size */
+  }
+
+  /* https://www.a11yproject.com/posts/how-to-hide-content/ */
+  .visually-hidden {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .header-nav {
+    display: flex;
+    justify-content: space-between; /* Ensures spacing between the root link and other links */
+    align-items: center; /* Centers items vertically */
+  }
+
+  @media screen and (max-width: 1199px) and (min-width: 768px) {
+    .home-link {
+      font-size: 2rem;
+    }
+  }
+
+  @media screen and (max-width: 767px) {
+    .home-link {
+      display: none;
+    }
+  }
+
+  @media (max-width: 767px) {
+    .header-nav {
+      display: none;
+    }
+    
+    .nav-menu {
+      display: none;
+      flex-direction: column;
+      width: 100%;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: #333;
+    }
+
+    .nav-menu li {
+      text-align: center;
+    }
+
+    .nav-menu.active {
+      display: flex;
+    }
+
+    .nav-toggle {
+      display: block;
+      cursor: pointer;
+    }
+
+    .nav-toggle span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background: #fff;
+      margin: 5px;
+    }
+  }
+
+  .nav {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px 20px;
+  }
+
+  .nav-menu {
+    display: flex;
+    gap: 20px;
+  }
+
+  .nav-menu li {
+    position: relative;
+  }
+
+  .nav-menu a {
+    padding: 10px 15px;
+    display: block;
+  }
+
+  .nav-menu .dropdown-menu li a {
+  }
+
+  .nav-menu .dropdown:hover .dropdown-menu {
+    display: flex;
+  }
+</style>

@@ -1,0 +1,29 @@
+/* Body */
+
+body {
+  margin: 0;
+  font-family: "Syne", sans-serif;
+  font-optical-sizing: none;
+  font-style: normal;
+  font-weight: 400;
+  color: white;
+  background-color: black;
+}
+
+body p {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+/* Links */
+
+a:visited{
+ color:inherit;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+}
