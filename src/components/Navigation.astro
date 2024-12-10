@@ -3,8 +3,8 @@ import Logo from './logo.svg'
 import { useMetadata } from 'astro:head';
 
 const currentPath = Astro.url.pathname
-const navClass = (ref) => {
-  return ref===currentPath ? ' active ' : ''
+const active = (ref) => {
+  return ref===currentPath ? ' active ' : 'inactive'
 }
 
 ---
@@ -21,17 +21,17 @@ const navClass = (ref) => {
       <h2 class="visually-hidden">Top level navigation menu</h2>
       <button class="nav-button">☰</button>
       <ul class="nav-menu">
-        <li class={'nav-item' + navClass('/services')}><a href="/services"><h3>Services & Fees</h3></a></li>
-        <li class={'nav-item' + navClass('/blogs')}><a href="/blogs"><h3>Blog</h3></a></li>
+        <li class='nav-item'><a href="/services"><h3 class={active('/services')}>Services & Fees</h3></a></li>
+        <li class="nav-item"><a href="/blogs"><h3 class={active('/blogs')}>Blog</h3></a></li>
       </ul>
     </nav>
 
     <nav id="overlay-nav">
       <button class="close-button" onclick="closeNav()">X</button>
       <ul>
-        <li class={'nav-item' + navClass('/')}><a href="/"><h3>Home</h3></a></li>
-        <li class={'nav-item' + navClass('/services')}><a href="/services"><h3>Services & Fees</h3></a></li>
-        <li class={'nav-item' + navClass('/blogs')}><a href="/blogs"><h3>Blog</h3></a></li>
+        <li class="nav-item"><a href="/"><h3 class={active('/')}>Home</h3></a></li>
+        <li class="nav-item"><a href="/services"><h3 class={active('/services')}>Services & Fees</h3></a></li>
+        <li class="nav-item"><a href="/blogs"><h3 class={active('/blogs')}>Blog</h3></a></li>
       </ul>
     </nav>
 </header>
@@ -148,12 +148,13 @@ function closeNav() {
   .nav-item {
     list-style-type: none; 
   }
-  .nav-item h3 {
+
+  .inactive {
     font-size: 1.5rem;
     font-weight: 400;
   }
-
-  .active h3 {
+  .active {
+    font-size: 1.5rem;
     font-weight: bold;
   }
 
