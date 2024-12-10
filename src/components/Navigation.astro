@@ -4,7 +4,7 @@ import { useMetadata } from 'astro:head';
 
 const currentPath = Astro.url.pathname
 const active = (ref) => {
-  return ref===currentPath ? ' active ' : 'inactive'
+  return ref===currentPath || ref===currentPath+'/' ? ' active ' : 'inactive'
 }
 
 ---
