@@ -1,0 +1,27 @@
+---
+import DefaultLayout from '../layouts/default.astro'
+import Content from '../layouts/body-content.astro'
+import MainHero from '../components/MainHero.astro'
+import MainContent from '../components/MainContent.astro'
+---
+<DefaultLayout>
+  <Content>
+    <h1>Contact</h1>
+    <p>I hope that I have been able to answer most of your questions on this website. If you have any more or would like to get started reshaping your technical strategy, please reach out!</p>
+    <p class="center">Please Call Me - I Don't Bite</p>
+    <p>Phone: <a href="tel:2628222996">(262) 822-2996</a></p>
+    <p>Email: <a href="mailto:connor@mountainsoundit.com?Subject=Service%20Inquiry">connor@mountainsoundit.com</a></p>
+  </Content>
+</DefaultLayout>
+
+<style>
+  a {
+    color: #0a9ef0;
+  }
+  p {
+    font-size: 1.2rem;
+  }
+  .center {
+    font-size: 1.5rem;
+  }
+</style>
