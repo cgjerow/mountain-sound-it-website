@@ -4,11 +4,10 @@ import { useMetadata } from 'astro:head';
 
 const currentPath = Astro.url.pathname
 const navClass = (ref) => {
-  return ref===currentPath ? 'nav-item active' : 'nav-item'
+  return ref===currentPath ? ' active ' : ''
 }
 
 ---
-
 
 <header class="header-nav">
     <a class="logo-header-link home-link" href="/">
@@ -22,17 +21,17 @@ const navClass = (ref) => {
       <h2 class="visually-hidden">Top level navigation menu</h2>
       <button class="nav-button">☰</button>
       <ul class="nav-menu">
-        <li class={navClass('/services')}><a href="/services">Services & Fees</a></li>
-        <li class={navClass('/blogs')}><a href="/blogs">Blog</a></li>
+        <li class={'nav-item' + navClass('/services')}><a href="/services"><h3>Services & Fees</h3></a></li>
+        <li class={'nav-item' + navClass('/blogs')}><a href="/blogs"><h3>Blog</h3></a></li>
       </ul>
     </nav>
 
     <nav id="overlay-nav">
       <button class="close-button" onclick="closeNav()">X</button>
       <ul>
-        <li><a href="/">Home</a></li>
-        <li><a href="/services">Services & Fees</a></li>
-        <li><a href="/blogs">Blog</a></li>
+        <li class={'nav-item' + navClass('/')}><a href="/"><h3>Home</h3></a></li>
+        <li class={'nav-item' + navClass('/services')}><a href="/services"><h3>Services & Fees</h3></a></li>
+        <li class={'nav-item' + navClass('/blogs')}><a href="/blogs"><h3>Blog</h3></a></li>
       </ul>
     </nav>
 </header>
@@ -54,7 +53,6 @@ function closeNav() {
   .logo-header-link {
       margin-left: 3%;
       text-decoration: none; /* Remove underline from link */
-      color: inherit; /* Inherit text color */
       display: inline-block; /* Allows for padding and centering */
   }
 
@@ -86,6 +84,7 @@ function closeNav() {
 
   .header-nav {
     background: black;
+    color: white;
     height: 80px;
     position: fixed;
     top: 0;
@@ -147,13 +146,15 @@ function closeNav() {
 
 
   .nav-item {
-    list-style-type: none; /* Remove bullets */
+    list-style-type: none; 
+  }
+  .nav-item h3 {
     font-size: 1.5rem;
+    font-weight: 400;
   }
 
-  .active {
-    text-decoration: underline;
-    text-underline-offset: 3px;
+  .active h3 {
+    font-weight: bold;
   }
 
   @media screen and (max-width: 1199px) and (min-width: 768px) {
@@ -171,12 +172,16 @@ function closeNav() {
   }
 
   @media screen and (max-width: 767px) {
-    .home-link {
-      display: none;
+    .logo-text {
+      font-size: 1.2rem;
+    }
+    .logo {
+        width: auto; /* Adjust size as needed */
+        height: 2rem;
     }
 
     .header-nav {
-      justify-content: right;
+      justify-content: space-between;
       height: 50px;
     }
 

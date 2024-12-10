@@ -1,21 +1,25 @@
 ---
 import Navigation from '../components/Navigation.astro'
 import BaseHead from '../components/BaseHead.astro'
+const { background } = Astro.props
 ---
 
-<html lang="en">
+<html lang="en" background-color="black">
 	<head>
 		<BaseHead />
 	</head>
 	<body>
     <Navigation />
 		<div class="slot">
-    <slot />
+			<slot />
 		</div>
 	</body>
 </html>
 
-<style>
+<style define:vars={{ background }}>
+	body {
+		background-color: var(--background)
+	}
 	.slot {
 		padding-top: 80px;
 	}

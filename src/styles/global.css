@@ -1,13 +1,13 @@
 /* Body */
-
+/*
 body {
   margin: 0;
   font-family: "Syne", sans-serif;
   font-optical-sizing: none;
   font-style: normal;
   font-weight: 400;
-  color: white;
-  background-color: black;
+  color: black;
+  background-color: white;
 }
 
 body p {
@@ -15,7 +15,19 @@ body p {
   font-weight: 300;
   font-style: normal;
 }
+*/
 
+body {
+  font-family: "Roboto", sans-serif;
+  font-weight: 300;
+  font-style: normal;
+  margin: 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Syne", sans-serif;
+  font-weight: bold;
+}
 
 /* Links */
 
