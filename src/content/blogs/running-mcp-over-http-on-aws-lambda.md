@@ -4,16 +4,11 @@ description: Host MCP tool servers as request-scoped Lambda functions behind API
 pubDate: 2026-08-23
 ---
 
-MCP servers are usually long-lived processes. That is a poor fit for an API where every other endpoint is already a Lambda behind API Gateway.
+MCP servers are becoming a more and more common standard throughout the software world, regardless of if your primary product is AI related. Creating a pathway for AI agents to interact with your data can be incredibly valuable for your users, both internal and external.
 
-Treat MCP like any other HTTP route instead. Use Express for routing, wrap it with `serverless-http`, and bridge MCP's Node handler into that request cycle. Auth stays at the gateway. Tools register the same way they would in a long-lived process—the process only lives for the duration of the invocation.
+However, if your systems are built around a serverless architecture MCP wasn't really designed for you. It was originally built around the idea that these MCP servers were running locally or with long-lived processes and connections, none of which screams *serverless*.
 
-## Why this shape
-
-- You already authenticate at the gateway (Cognito or similar). You do not want a second session model for MCP.
-- Tools call the same services your REST handlers already use.
-- Clients speak Streamable HTTP / JSON-RPC over POST. They expect a URL, not a container to babysit.
-- Lambda payload and timeout limits matter—especially for tools that return documents.
+Goal: Treat our MCP servers like any other serverless API.
 
 ## Architecture
 
@@ -21,16 +16,16 @@ Treat MCP like any other HTTP route instead. Use Express for routing, wrap it wi
 MCP client
     │  POST /weather-mcp  (Bearer JWT)
     ▼
-API Gateway  →  Cognito authorizer
+API Gateway
+    │
     ▼
-Lambda  (Express + serverless-http)
-    │  App-level group / scope checks
-    │  toNodeHandler(createMcpHandler(...))
+Lambda
+    │  Express + serverless-http
     ▼
 McpServer  →  registerTool(...)  →  your services
 ```
 
-Three pieces do the work:
+Three pieces do the bulk of the work:
 
 1. **`createMcpHandler`** — builds an `McpServer`, registers tools, returns the MCP request handler.
 2. **`toNodeHandler`** — adapts that handler to Node's `(req, res, body)` shape for Express.
@@ -51,39 +46,21 @@ const app = express();
 app.use(express.json());
 
 app.post("/weather-mcp", (req, res) => {
-  if (!callerHasAccess(req.headers, ["weather-readers"])) {
-    res.status(401).json({
-      error: "invalid_token",
-      error_description: "Permission denied.",
-    });
-    return;
-  }
-
   return toNodeHandler(createWeatherMcpHandler)(req, res, req.body);
 });
 
 app.post("/crm-mcp", (req, res) => {
-  if (!callerHasAccess(req.headers, ["crm-readers", "admins"])) {
-    res.status(401).json({
-      error: "invalid_token",
-      error_description: "Permission denied.",
-    });
-    return;
-  }
-
   return toNodeHandler(createCrmMcpHandler)(req, res, req.body);
 });
 
 export const lambdaHandler = serverless(app);
 ```
 
-One Express app can host multiple MCP surfaces as separate routes when tool sets have different audiences or IAM footprints. Or split routes across Lambdas so memory, timeout, and policies match each tool set. Gateway auth alone is not enough if routes need different group membership—enforce that in the route.
-
-In SAM, each surface is a normal `AWS::Serverless::Function`: `POST` on a dedicated path, the same Cognito authorizer as the rest of the API, and memory / timeout / IAM sized to the heaviest tool you expose. Stay under API Gateway's integration timeout.
+One Express app can host multiple MCP surfaces as separate routes or split routes across Lambdas so memory, timeout, and policies match each tool set.
 
 ## Defining tools
 
-Keep domain logic in services. Keep the MCP layer as a thin schema + adapter.
+Keep domain logic in services. Keep the MCP layer as a thin schema + adapter just like we do for HTTP or any other transport layer.
 
 ```ts
 import {
@@ -140,12 +117,9 @@ export const createWeatherMcpHandler = createMcpHandler(() => {
 
 What matters most:
 
-- **Write descriptions for the model**—when to call the tool, what not to assume, how to chain related tools.
-- **Tight JSON Schema** (`additionalProperties: false`) to cut garbage arguments.
-- **Return `structuredContent` plus a short text summary.**
+- **Write descriptions for the model**—when to call the tool, what not to assume, how to chain related tools. This is injected context that gives the AI Agent better understanding of how to leverage your system.
+- **Return your structured data in `structuredContent` and you can include additional natural language context in `content`.**
 - **Annotate side effects** (`readOnlyHint`, `destructiveHint`, `openWorldHint`).
-
-Split read and write tools across routes or Lambdas if auth treats them differently.
 
 ## Tradeoffs
 
@@ -153,8 +127,7 @@ Split read and write tools across routes or Lambdas if auth treats them differen
 
 **Watch for:**
 
-- **Cold starts**, especially in a VPC under bursty traffic.
-- **Payload limits**—prefer search → metadata → signed URL over returning large blobs.
+- **Payload limits**—especially for documents you may prefer search → metadata → signed URL over returning large blobs.
 - **Timeouts**—heavy RAG or multi-hop work may need async patterns instead of an inline tool response.
 - **No long-lived local state**—in-memory caches are not for correctness.
 - **Streaming**—validate what your MCP HTTP transport and API Gateway integration actually support before promising it.
@@ -182,6 +155,4 @@ MCP-aware clients also need a way to discover *how* to authenticate. Two complem
 1. **Protected resource metadata** at `GET /.well-known/oauth-protected-resource` (unauthenticated)—JSON naming the resource URL, authorization server(s), and supported scopes.
 2. **`WWW-Authenticate` on gateway 401s** pointing at that metadata URL, e.g. `Bearer resource_metadata="https://mcp.example.com/.well-known/oauth-protected-resource"`.
 
-In SAM / API Gateway this is usually a MOCK integration for the well-known route plus a `GatewayResponse` for `UNAUTHORIZED`. The MCP Lambda does not have to serve discovery if the gateway owns it.
-
-Scopes on the API method can stay coarse (`openid`) while JWT groups do real authorization. Keep failures consistent: `401` with `invalid_token` / `Permission denied` when the route’s group check fails.
+In API Gateway this is usually a MOCK integration for the well-known route plus a `GatewayResponse` for `UNAUTHORIZED`. The MCP Lambda does not have to serve discovery if the gateway owns it.
