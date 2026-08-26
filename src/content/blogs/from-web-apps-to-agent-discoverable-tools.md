@@ -12,23 +12,23 @@ Then again, why do we need to try?
 
 Roadmaps built on mockups, debates about how a search field should behave, and other clairvoyant product analysis lose footing when **ad-hoc user interfaces (UIs), reports, and workflows** are generated on request, not shipped as product features.
 
-## A shift to chaos
+## Embracing "Chaos"
 
-I remember a conversation I had with a colleague years ago about standardizing platform errors. Our system would not let application teams attach structured data to error responses. I was building a feature with multiple failure modes and client-side handling implications, and asked for a generic structured-data slot teams could reuse.
+I remember a conversation with a colleague years ago about standardizing platform errors. Our system would not let application teams attach structured data to error responses. I was building a feature with multiple failure modes and client-side handling implications, and asked for a generic structured-data slot teams could use as needed.
 
-He pushed back hard. An unstructured error payload would be the *Wild West*—absolute chaos.
+He pushed back hard. "An unregulated error payload would be the *Wild West*—absolute chaos. No control over how teams use this structure."
 
-Teams were already encoding their handling logic into string error messages, I said—which seemed worse on every axis, but he was not to be swayed.
+I pointed out that teams were already encoding handling logic into string error messages, an obviously worse situation, but he was not swayed.
 
-I still believe what I argued that day. But part of me wanted to reply: *Then let there be chaos.* Flexibility is software's most valuable trait. A little chaos surfaces pictures no one saw at **design time**—the phase where we spend hours, week, or (sadly) months on mockups, filter placement, error-state wireframes, and whether a search box should fuzzy-match or exact-match before a single user touches the thing.
+I still believe what I argued that day. But part of me wanted to reply: *Then let there be chaos.* Flexibility is software's most valuable trait. A little chaos surfaces pictures no one saw at **design time**—the phase where we spend hours, weeks, or (sadly) months on mockups, filter placement, error-state wireframes, and whether a search box should fuzzy-match or exact-match before a single user touches the thing.
 
-So what does this have to do with AI and agent-driven software? Those two words: design time.
+So what does this have to do with AI and agent-driven software? Same two words: **design time**.
 
-My question is what will design look like when the chaos of every user requesting a custom real-time generated view of their system becomes the norm...yesterday.
+What happens to design when every user can request a custom, real-time view of their system—and that chaos is the norm, not the exception? Not next year. Yesterday.
 
-## User experience (UX): the discipline most exposed
+## User experience (UX): A discipline exposed
 
-Design time is where UX lives—and as a named profession, UX is the new kid on the block. Design systems, dedicated UX orgs, and the Figma-to-engineering pipeline are mostly a post-2010 story. User-centric thinking is as old as software; user interface and user experience (UI/UX) as a standalone practice, at macro scale, is still in its infancy.
+That question lands hardest on UX. Design time is where the profession lives—and as a named practice, it is still the new kid on the block. Design systems, dedicated UX orgs, and the Figma-to-engineering pipeline are mostly a post-2010 story. User-centric thinking is as old as software; user interface and user experience (UI/UX) as a standalone practice, at macro scale, is still in its infancy.
 
 Traditional apps ask users to navigate a map someone else drew—menu trees, dashboards, wizards, onboarding. Product and UX front-load every turn: which screens exist, which filters land on the report page, which affordances get permanent pixels. That was always a bottleneck. One opinion, frozen in the UI, workable for a subset of users and friction for others—because UX is at its core opinionated.
 
@@ -46,7 +46,7 @@ Agent  →  discover tools  →  plan + call  →  compose result
 Ephemeral surface (not a shipped page)
 ```
 
-Engineering mostly carries forward—auth, data modeling, service boundaries, validation—with a new interface. UX faces the sharper question: if the UI is generated per request, what happens to wireframing and testing *specific* screens?
+Engineering mostly carries forward—authentication, data modeling, service boundaries, validation—with a new interface. UX faces the sharper question: if the UI is generated per request, what happens to wireframing and testing *specific* screens?
 
 Accessibility hits the same wall. Web Content Accessibility Guidelines (WCAG) assumed fixed screens you audit before ship; generated UI may never look the same twice. The counterweight: users can ask for the presentation they need in the moment—plain text instead of a chart, larger type, high contrast, a walkthrough instead of a dense table. That beats baking one org's accessibility opinion into permanent pixels, but only if tools return structured data and the agent renders real semantics—not div soup.
 
@@ -79,7 +79,7 @@ Structured Query Language (SQL) reports and JavaScript Object Notation (JSON) pa
 | Client-side state machines        | Idempotent, composable server capabilities                  |
 
 
-You still need auth, observability, rate limits, and domain knowledge. You ship less of the long tail of screens that exist only because a human had to click through them.
+You still need authentication, observability, rate limits, and domain knowledge. You ship less of the long tail of screens that exist only because a human had to click through them.
 
 Deliverables:
 
@@ -111,8 +111,8 @@ The shift is many-to-most internal and business-to-business (B2B) software, not 
 
 - **Invest in tool quality** like you once invested in component libraries—descriptions, error messages, pagination, idempotency keys.
 - **Collapse duplicate surfaces.** If a screen only exposes an API operation, expose the operation as a tool and drop the screen. Keep thin admin UI where human override is required.
-- **Design auth for agents**—scoped tokens, per-tool identity and access management (IAM), audit logs—not just session cookies.
-- **Measure differently.** Fewer page views can mean success. Track tool success rates, auth denials, repeated failed calls.
+- **Design authentication for agents**—scoped tokens, per-tool identity and access management (IAM), audit logs—not just session cookies.
+- **Measure differently.** Fewer page views can mean success. Track tool success rates, authentication denials, repeated failed calls.
 - **Change the product contract.** Acceptance criteria for capabilities ("list open tickets by assignee with service level agreement (SLA) breach flag"), not mockups for every filter combo.
 
 Migration is incremental: inventory the questions your dashboards answer (each is a tool candidate), wrap existing services without forking logic, ship a small tool set to a trusted audience and fix what agents get wrong, retire screens only when logging is compliance-ready. Presentation comes last—stable IDs and structured responses before pretty charts.
