@@ -20,7 +20,7 @@ He pushed back hard. "An unregulated error payload would be the *Wild West*—ab
 
 I pointed out that teams were already encoding handling logic into string error messages, an obviously worse situation, but he was not swayed.
 
-I still believe what I argued that day. But part of me wanted to reply: *Then let there be chaos.* Flexibility is software's most valuable trait. A little chaos surfaces pictures no one saw at **design time**—the phase where we spend hours, weeks, or (sadly) months on mockups, filter placement, error-state wireframes, and whether a search box should fuzzy-match or exact-match before a single user touches the thing.
+I still believe in what I argued for that day, but part of me honestly wanted to reply: *Then let there be chaos.* Flexibility is software's most valuable trait. A little chaos surfaces pictures no one saw at **design time**, that phase where we spend hours, weeks, or (sadly) months on mockups, filter placement, error-state wireframes, and whether a search box should fuzzy-match or exact-match. And all before a *single user* touches the thing.
 
 So what does this have to do with AI and agent-driven software? It comes back to the same two words: **design time**.
 
