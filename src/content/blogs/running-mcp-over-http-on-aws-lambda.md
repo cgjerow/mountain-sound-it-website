@@ -4,7 +4,7 @@ description: Host MCP tool servers as request-scoped Lambda functions behind API
 pubDate: 2026-08-23
 ---
 
-MCP servers are becoming a more and more common standard throughout the software world, regardless of if your primary product is AI related. Creating a pathway for AI agents to interact with your data can be incredibly valuable for your users, both internal and external.
+MCP servers are becoming an increasingly common standard throughout the software world, regardless of if your primary product is AI related. Creating a pathway for AI agents to interact with your data can be incredibly valuable for your users, both internal and external.
 
 However, if your systems are built around a serverless architecture MCP wasn't really designed for you. It was originally built around the idea that these MCP servers were running locally or with long-lived processes and connections, none of which screams *serverless*.
 
@@ -28,7 +28,7 @@ McpServer  →  registerTool(...)  →  your services
 Three pieces do the bulk of the work:
 
 1. **`createMcpHandler`** — builds an `McpServer`, registers tools, returns the MCP request handler.
-2. **`toNodeHandler`** — adapts that handler to Node's `(req, res, body)` shape for Express.
+2. **`toNodeHandler`** — adapts the handler to Node's `(req, res, body)` shape for Express.
 3. **`serverless-http`** — turns the Express app into a Lambda entrypoint.
 
 No sticky sessions. Each POST is a full MCP exchange for that invocation.
@@ -146,7 +146,7 @@ That is the pattern: MCP as another POST route on infrastructure you already ope
 
 ---
 
-## Additional: auth discovery for MCP clients
+## Auth Discovery for MCP Clients
 
 Gateway auth answers “is this a valid caller?” App-level group checks answer “is this caller allowed on this MCP surface?”
 

@@ -10,7 +10,7 @@ The emerging default looks simpler: expose **agent-discoverable tools**, typed i
 
 Then again, why do we need to try?
 
-Roadmaps built on mockups, debates about how a search field should behave, and other clairvoyant product analysis lose footing when **ad-hoc user interfaces (UIs), reports, and workflows** are generated on request, not shipped as product features.
+Roadmaps built on mockups, debates about how a search field should behave, and other clairvoyant product analysis lose footing when **ad-hoc user interfaces, reports, and workflows** are generated on request, not shipped as product features.
 
 ## Embracing "Chaos"
 
@@ -30,9 +30,9 @@ What happens to design when every user can request a custom, real-time view of t
 
 That question lands hardest on UX. Design time is where this profession lives, and as a dedicated position or practice it is still the new kid on the block. Design systems, dedicated UX orgs, and the Figma-to-engineering pipeline are mostly a post-2010 phenomenon. Of course, User-centric thinking is as old as software, but the direction that UX has evolved is less trodden and seemingly ripe for disruption.
 
-Traditional apps ask users to navigate a map someone else drew—menu trees, dashboards, wizards, onboarding. Product and UX front-load every turn: which screens exist, which filters land on the report page, which affordances get permanent pixels. That was always a bottleneck. One opinion, frozen in the UI, workable for a subset of users and friction for others—because UX is at its core opinionated.
+Traditional apps ask users to navigate a map someone else drew—menu trees, dashboards, wizards, onboarding. Product and UX front-load every turn: which screens exist, which filters land on the report page, which affordances get permanent pixels. That was always a bottleneck. One opinion, frozen in the user interface, workable for a subset of users and friction for others—because UX is at its core opinionated.
 
-Agents invert that. The user states intent ("overdue invoices by region for Q2, grouped by rep, flag anything over 60 days"). The agent discovers tools, calls them, renders a one-off view—table, chart, email, portable document format (PDF)—without a `/reports/overdue-invoices` route or a wireframe for that filter combination.
+Agents invert that. The user states intent ("overdue invoices by region for Q2, grouped by rep, flag anything over 60 days"). The agent discovers tools, calls them, renders a one-off view—table, chart, email, PDF—without a `/reports/overdue-invoices` route or a wireframe for that filter combination.
 
 ```
 User intent
@@ -48,7 +48,7 @@ Ephemeral surface (not a shipped page)
 
 Most complex engineering concerns carry forward: authentication, data modeling, service boundaries, validation. Perhaps there is a new integration surface, but that is always to be expected. UX faces the sharper question: if the UI is generated per request, what happens to wireframing and testing *specific* screens?
 
-Accessibility hits the same wall. Web Content Accessibility Guidelines (WCAG) assumed fixed screens you audit before ship; generated UI may never look the same twice. The counterweight: users can ask for the presentation they need in the moment—plain text instead of a chart, larger type, high contrast, a walkthrough instead of a dense table. That beats baking one org's accessibility opinion into permanent pixels, but only if tools return structured data and the agent renders real semantics—not div soup.
+Accessibility hits the same wall. Web Content Accessibility Guidelines (WCAG) assumed fixed screens you audit before ship; generated user interface (UI) may never look the same twice. The counterweight: users can ask for the presentation they need in the moment—plain text instead of a chart, larger type, high contrast, a walkthrough instead of a dense table. That beats baking one org's accessibility opinion into permanent pixels, but only if tools return structured data and the agent renders real semantics—not div soup.
 
 The durable artifact is not the React page or the Figma file. It is the **tool contract**: what the capability does, what the agent needs to work on behalf of the user. Pre-drawn navigation and static report pages were never going to fit every user anyway. Trust, error recovery, and inspectability matter more when the surface changes every session.
 
@@ -59,10 +59,12 @@ Most business software is not consumed for its UX. People open it to answer a qu
 Agents change the economics:
 
 - **Discovery over navigation.** Users describe outcomes while the agent navigates its available toolset to best serve that goal.
-- **Composition over feature flags.** A report that took a sprint becomes a prompt that the end user requests from an agent directly, without engineering or any other team needing be involved or at all aware.
+- **Composition over feature flags.** A report that took a sprint becomes a prompt that the end user requests from an agent directly, without engineering or any other team needing to be involved or at all aware.
 - **Fewer permanent screens.** Settings pages and export buttons shrink when the agent calls `list_accounts` or `generate_csv` and shows only what the moment needs.
 
 UI becomes **generated, contextual, and disposable**—a rendering layer on tool output, not the product surface.
+
+If agents replace screens, what do developers actually build instead?
 
 ## What's Left to Build
 
@@ -79,7 +81,7 @@ Request payloads move behind tools—not behind pages.
 | Client-side state machines        | Idempotent, composable server capabilities                  |
 
 
-You still need authentication, observability, rate limits, and (most importantly) **domain knowledge**! You focus more into the core application logic and models without the need to rebuild, retest, and redeploy new frontends each step of the way.
+You still need authentication, observability, rate limits, and (most importantly) **domain knowledge**! Your focus shifts even more to the core application logic and models without the need to rebuild, retest, and redeploy new frontends each step of the way.
 
 Deliverables:
 
@@ -88,20 +90,20 @@ Deliverables:
 3. **Meta tools** — resolve IDs, explain enums, fetch schema. Cut bad calls and guesswork.
 4. **Presentation hints** — optional. Structured data first; let the agent pick chart vs table vs prose.
 
-[Model Context Protocol (MCP) over Hypertext Transfer Protocol (HTTP) on Lambda](/blogs/running-mcp-over-http-on-aws-lambda) is one transport. OpenAPI function calling and vendor agent platforms are others. The transport varies, but the discoverable, documented API capability does not.
+[Model Context Protocol (MCP) over HTTP on Lambda](/blogs/running-mcp-over-http-on-aws-lambda) is one transport. OpenAPI function calling and vendor agent platforms are others. The transport varies, but the discoverable, documented API capability does not.
 
 ## Ad-hoc UI in production
 
 Generated interfaces get dismissed as demos. Production needs constraints:
 
 - **Ground UI in tool output.** Charts bind to structured fields the tools returned—not numbers the model invented.
-- **Keep write paths explicit.** A generated form maps to a known write tool with the same validation the application programming interface (API) enforces.
+- **Keep write paths explicit.** A generated form maps to a known write tool with the same validation the API enforces.
 - **Layout is cheap; trust is expensive.** A sortable table is easy. Row-level security lives in the tools, not the renderer.
 
-Done well, ad-hoc UI is business intelligence (BI) without a BI backlog: the agent writes the report; you make the data callable and safe.
+Done well, ad-hoc UI is business intelligence without a BI backlog: the agent writes the report; you make the data callable and safe.
 
 ## One Caveat on UI
 
-This doesn't even discuss the updates to the MCP protocol that allows tools to surface UI widgets (sometimes referred to as UI applications) through their tools.
+This doesn't even discuss the updates to the Model Context Protocol (MCP) that allows tools to surface UI widgets (sometimes referred to as tool-defined UI) through their tools.
 
 It's hard to say where exactly those will fit in when real-time UIs are already so powerful, but it can certainly help move some of those tools that seem to require a well defined structured UI into the agent harness. And that move is happening fast.
