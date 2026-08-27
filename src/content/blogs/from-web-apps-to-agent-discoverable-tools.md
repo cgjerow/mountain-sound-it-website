@@ -34,17 +34,23 @@ Traditional apps ask users to navigate a map someone else drew—menu trees, das
 
 Agents invert that. The user states intent ("overdue invoices by region for Q2, grouped by rep, flag anything over 60 days"). The agent discovers tools, calls them, renders a one-off view—table, chart, email, PDF—without a `/reports/overdue-invoices` route or a wireframe for that filter combination.
 
-```
-User intent
-    │
-    ▼
-Agent  →  discover tools  →  plan + call  →  compose result
-    │         (Model Context Protocol (MCP), OpenAPI,
-    │          function schemas)          (structured data +
-    │                                       generated UI / report)
-    ▼
-Ephemeral surface (not a shipped page)
-```
+<div class="diagram">
+  <div class="diagram-line">User intent</div>
+  <div class="diagram-line">│</div>
+  <div class="diagram-line">▼</div>
+  <div class="diagram-line">Agent</div>
+  <div class="diagram-line">│</div>
+  <div class="diagram-line">├─ discover tools →</div>
+  <div class="diagram-note">│&nbsp;&nbsp;&nbsp;(MCP, OpenAPI, function schemas)</div>
+  <div class="diagram-line">│</div>
+  <div class="diagram-line">├─ plan + call →</div>
+  <div class="diagram-note">│&nbsp;&nbsp;&nbsp;(structured data + generated UI / report)</div>
+  <div class="diagram-line">│</div>
+  <div class="diagram-line">└─ compose result</div>
+  <div class="diagram-line">│</div>
+  <div class="diagram-line">▼</div>
+  <div class="diagram-line">Ephemeral surface (not a shipped page)</div>
+</div>
 
 Most complex engineering concerns carry forward: authentication, data modeling, service boundaries, validation. Perhaps there is a new integration surface, but that is always to be expected. UX faces the sharper question: if the UI is generated per request, what happens to wireframing and testing *specific* screens?
 

@@ -128,6 +128,40 @@ const formatDate = (date: Date) =>
     padding-bottom: 2rem;
   }
 
+  .diagram {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1rem;
+    padding: 1rem 1.25rem;
+    margin: 1.5rem 0;
+    background: #f8f9fa;
+    border-left: 3px solid #0a9ef0;
+    border-radius: 0 4px 4px 0;
+    font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+    font-size: 0.88rem;
+    line-height: 1.5;
+    color: #333;
+    overflow-x: auto;
+  }
+
+  .diagram-line {
+    white-space: pre;
+  }
+
+  .diagram-note {
+    font-size: 0.8rem;
+    color: #555;
+    white-space: pre;
+  }
+
+  @media screen and (max-width: 767px) {
+    .diagram {
+      font-size: 0.78rem;
+      padding: 0.75rem 1rem;
+    }
+  }
+
   @media screen and (max-width: 767px) {
     .post-body :global(p),
     .post-body :global(li) {
