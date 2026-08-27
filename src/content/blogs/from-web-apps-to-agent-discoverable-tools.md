@@ -79,12 +79,11 @@ Request payloads move behind tools—not behind pages.
 
 | Old default                       | New default                                                 |
 | --------------------------------- | ----------------------------------------------------------- |
-| Page routes and layout components | Tool registries with schemas and auth scopes                |
-| Form validation in the browser    | Input validation at the tool boundary                       |
-| Dashboard widgets                 | Structured tool responses (`structuredContent`, typed JSON) |
+| Shipped pages and navigation      | Discoverable tool interfaces                                |
+| Validation scattered across forms and endpoints | Validation declared once in tool schemas          |
+| Pre-built dashboard components    | Agent-built dashboards on demand                            |
 | "Reports" as SQL + a template     | Query tools + agent-generated presentation                  |
-| Onboarding tours                  | Tool descriptions written for models                        |
-| Client-side state machines        | Idempotent, composable server capabilities                  |
+| Client-side state management      | Stateless, composable tool operations                       |
 
 
 You still need authentication, observability, rate limits, and (most importantly) **domain knowledge**! Your focus shifts even more to the core application logic and models without the need to rebuild, retest, and redeploy new frontends each step of the way.
