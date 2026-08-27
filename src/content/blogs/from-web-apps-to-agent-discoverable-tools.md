@@ -1,7 +1,7 @@
 ---
 title: From Web Apps to Agent-Discoverable Tools
 description: The center of gravity for web developers is moving from screens and dashboards to tool surfaces agents can find, call, and compose—while user interfaces and reports are generated on demand.
-pubDate: 2026-08-31
+pubDate: 2026-08-26
 ---
 
 For twenty years, "web developer" meant building applications: login flows, navigation shells, Create, Read, Update, Delete (CRUD) screens, admin dashboards, report pages wired up in advance. That work is not vanishing, but it is no longer the default shape of the job.
